@@ -10,8 +10,13 @@ public class TimeOfDay implements Comparable<TimeOfDay> {
     private int minutes;
 
     public TimeOfDay(int hours, int minutes) {
-        this.hours = hours;
-        this.minutes = minutes;
+        if (hours < 0) {
+            this.hours = 0;
+        } else this.hours = Math.min(hours, 23);
+
+        if (minutes < 0) {
+            this.minutes = 0;
+        } else this.minutes = Math.min(minutes, 59);
     }
 
     @Override
